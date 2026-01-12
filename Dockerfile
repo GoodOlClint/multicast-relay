@@ -1,8 +1,8 @@
-FROM python:3-alpine AS build
+FROM python:3.13.0a4-alpine AS build
 RUN apk add --no-cache gcc linux-headers musl-dev
 RUN pip wheel netifaces
 
-FROM python:3-alpine
+FROM python:3.13.0a4-alpine
 
 COPY --from=build /netifaces*.whl /tmp
 RUN pip install /tmp/netifaces*.whl
